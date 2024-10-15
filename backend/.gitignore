@@ -1,0 +1,88 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+
+# Ignore MacOS system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+
+# Ignore build directory
+/build/
+
+# Java / Spring Boot ignores
+# Ignore target/ (Maven) or build/ (Gradle) directories where compiled code is generated
+target/
+build/
+
+# IDEs and editors
+*.ipr
+*.iws
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Logs
+*.log
+spring.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Maven / Gradle
+/.mvn/
+!mvnw
+!mvnw.cmd
+mvnw.cmd
+/.gradle/
+/.gradle/
+/build/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# IntelliJ IDEA project files
+/.idea/
+/*.iml
+*.class
+
+# Ignore JAR, WAR files
+*.jar
+*.war
+
+# Lombok generated files
+**/lombok.config
+
+# Spring Boot specific
+**/.spring-boot-devtools.properties
+**/META-INF/**
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# Ignore sensitive configuration files
+src/main/resources/application.properties
+src/main/resources/application.yml
+src/main/resources/application-*.properties
+src/main/resources/application-*.yml
