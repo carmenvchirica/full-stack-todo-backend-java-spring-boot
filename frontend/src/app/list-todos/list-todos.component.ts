@@ -35,7 +35,14 @@ export class ListTodosComponent  implements OnInit {
 
   deleteTodo(id: number) {
 
+    console.log('delete todo ', id);
 
+    this.service.deleteTodoById('carmen', id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Delete Todo ${id} Successful!`;
+      }
+    );
     
   }
 
