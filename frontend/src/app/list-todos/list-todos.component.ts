@@ -1,6 +1,7 @@
 import { NgIf, NgFor, UpperCasePipe, DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../services/data/todo-data.service';
+import { Router } from '@angular/router';
 
 export class Todo {
   constructor(public id: number,
@@ -18,12 +19,14 @@ export class Todo {
   imports: [NgIf, NgFor, UpperCasePipe, DatePipe]
 
 })
-export class ListTodosComponent  implements OnInit {
+export class ListTodosComponent implements OnInit {
 
   message = '';
   todos: Todo[] = [];
 
-  constructor(private service: TodoDataService) {}
+  constructor(private service: TodoDataService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
    this.refreshTodos();
@@ -35,7 +38,8 @@ export class ListTodosComponent  implements OnInit {
   }
 
   updateTodo(id: number) {
-
+    console.log('update todo ', id);
+    this.router.navigate(['todos', id]);
   }
 
   deleteTodo(id: number) {

@@ -32,7 +32,7 @@ public class TodoHardcodedService {
         return todo;
     }
 
-    private Todo findById(Long id) {
+    public Todo findById(Long id) {
         for(Todo t : todos) {
             if(t.getId() == id) {
                 return t;
