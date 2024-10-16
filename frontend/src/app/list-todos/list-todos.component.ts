@@ -26,7 +26,12 @@ export class ListTodosComponent  implements OnInit {
   constructor(private service: TodoDataService) {}
 
   ngOnInit() {
+   this.refreshTodos();
+  }
+
+  refreshTodos() {
    this.service.retrieveAllTodos('carmen').subscribe(resp => this.todos = resp);
+
   }
 
   updateTodo(id: number) {
@@ -41,6 +46,7 @@ export class ListTodosComponent  implements OnInit {
       response => {
         console.log(response);
         this.message = `Delete Todo ${id} Successful!`;
+        this.refreshTodos();
       }
     );
     
