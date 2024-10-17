@@ -12,6 +12,7 @@ export class TodoComponent implements OnInit{
 
   id: number = 0;
   todo: Todo = new Todo(this.id, '', false, new Date());
+  message = '';
 
   constructor(private todoService: TodoDataService,
     private route: ActivatedRoute
@@ -26,6 +27,12 @@ export class TodoComponent implements OnInit{
 
   saveTodo() {
     console.log(this.todo);
+    this.todoService.updateTodoById('carmen', this.id, this.todo).subscribe(
+      data => {
+        console.log(data);
+        this.message = `Updated Todo ${data.id} Successfuly`;
+      }
+    );
   }
 
 }

@@ -21,3 +21,8 @@ yarn-error.log*
 # Mac and Windows
 .DS_Store
 Thumbs.db
+
+# Miscellaneous
+/.angular/cache
+.tsbuildinfo
+.angular/
