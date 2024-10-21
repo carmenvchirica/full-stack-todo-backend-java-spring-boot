@@ -1,0 +1,14 @@
+.ng-invalid:not(form) {
+    border-left:5px solid red;
+}
+
+.ng-dirty:not(form) {
+    border:1px solid red;
+    border-left:5px solid red;
+}
+
+/* Remove the red border when the field is valid, even if it's dirty */
+.ng-dirty.ng-valid:not(form) {
+    border: 1px solid green; /* Optionally, use green border for valid fields */
+    border-left: 5px solid green; /* Or change this to any style you want */
+}
