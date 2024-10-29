@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HardcodedAuthenticationService } from '../services/hardcoded-authentication.service';
+import { HardcodedAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
   selector: 'app-menu',

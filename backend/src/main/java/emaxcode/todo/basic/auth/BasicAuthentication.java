@@ -1,15 +1,15 @@
-package emaxcode.todo.helloworld;
+package emaxcode.todo.basic.auth;
 
-public class HelloWorldDTO {
+public class BasicAuthentication {
 
     private String message;
     private String name;
 
-    public HelloWorldDTO(String helloWorld) {
+    public BasicAuthentication(String helloWorld) {
         this.message = helloWorld;
     }
 
-    public HelloWorldDTO(String message, String name) {
+    public BasicAuthentication(String message, String name) {
         this.message = message;
         this.name = name;
     }

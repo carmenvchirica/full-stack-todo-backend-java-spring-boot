@@ -1,15 +1,22 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+
+export class AuthenticationBean {
+  constructor(public message: string) { }
+
+}
 
 @Injectable({
   providedIn: 'root'
 })
-export class HardcodedAuthenticationService {
+export class BasicAuthenticationService {
 
   private userLoggedInSubject = new BehaviorSubject<boolean>(this.isUserLoggedIn());
   isUserLoggedIn$ = this.userLoggedInSubject.asObservable();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   authenticate(username: string, password: string) {
 
@@ -24,6 +31,17 @@ export class HardcodedAuthenticationService {
 
       return false;
     }
+
+  }
+
+  executeBasicAuthService(username: string, password: string) {
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+
+    let headers = new HttpHeaders({
+      Authorization: basicAuthHeaderString
+    });
+
+    return this.http.get<AuthenticationBean>(`http://localhost:8080/basicauth`, {headers});
   }
 
   isUserLoggedIn() {
@@ -36,4 +54,5 @@ export class HardcodedAuthenticationService {
     sessionStorage.removeItem('authenticatedUser');
     this.userLoggedInSubject.next(false);  // Notify about logout
   }
+
 } 

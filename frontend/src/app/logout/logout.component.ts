@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HardcodedAuthenticationService } from '../services/hardcoded-authentication.service';
+import { HardcodedAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
   selector: 'app-logout',
