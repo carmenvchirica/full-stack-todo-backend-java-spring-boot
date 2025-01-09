@@ -1,7 +1,7 @@
 import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HardcodedAuthenticationService } from '../services/basic-authentication.service';
+import { BasicAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,15 +14,15 @@ export class MenuComponent implements OnInit {
 
   isUserLoggedIn: boolean = false;
 
-  constructor(public hardcodedAuthenticationService: HardcodedAuthenticationService) {
+  constructor(public basicAuthenticationService: BasicAuthenticationService) {
    
   }
 
   ngOnInit(): void {
-    this.isUserLoggedIn = this.hardcodedAuthenticationService.isUserLoggedIn();
+    this.isUserLoggedIn = this.basicAuthenticationService.isUserLoggedIn();
 
     // Subscribe to the login status observable to update the menu
-    this.hardcodedAuthenticationService.isUserLoggedIn$.subscribe(isLoggedIn => {
+    this.basicAuthenticationService.isUserLoggedIn$.subscribe(isLoggedIn => {
       this.isUserLoggedIn = isLoggedIn;
     });
   }

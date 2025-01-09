@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 
 export class AuthenticationBean {
@@ -36,12 +36,22 @@ export class BasicAuthenticationService {
 
   executeBasicAuthService(username: string, password: string) {
     let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+    console.log(basicAuthHeaderString);
 
     let headers = new HttpHeaders({
       Authorization: basicAuthHeaderString
     });
 
-    return this.http.get<AuthenticationBean>(`http://localhost:8080/basicauth`, {headers});
+    let r = this.http.get<AuthenticationBean>(`http://localhost:8080/basicauth`, {headers})
+      .pipe(map(
+        data => {
+          // Save data to sessionStorage
+          sessionStorage.setItem('authenticatedUser', username);
+          return data;
+        }
+      ));
+
+    return r;
   }
 
   isUserLoggedIn() {

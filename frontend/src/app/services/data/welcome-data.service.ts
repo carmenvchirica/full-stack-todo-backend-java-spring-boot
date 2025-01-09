@@ -21,7 +21,7 @@ export class WelcomeDataService {
       Authorization: basicAuthString
     });
 
-    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-bean', {headers});
+    return this.http.get<string>('http://localhost:8080/hello' , {headers, responseType: 'text' as 'json' });
   }
 
 

@@ -9,11 +9,6 @@ public class BasicAuthentication {
         this.message = helloWorld;
     }
 
-    public BasicAuthentication(String message, String name) {
-        this.message = message;
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }
