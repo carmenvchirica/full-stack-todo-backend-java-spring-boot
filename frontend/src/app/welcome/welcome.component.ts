@@ -25,10 +25,12 @@ export class WelcomeComponent implements OnInit {
   }
 
   getWelcomeMessage() {
-    this.service.executeHelloWorldService().subscribe(
-      response => this.handleSuccessfulResponse(response), 
-      error => this.handleErrorResponse(error.error)
-    );
+    this.service.executeHelloWorldService().subscribe(data => {
+      console.log('data=', data);
+      this.welcomeMessageFromService = data;
+  });
+
+
   }
 
   getWelcomeMessageWithPathVariable() {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Added
-import { HardcodedAuthenticationService } from '../services/hardcoded-authentication.service';
+import { BasicAuthenticationService } from '../services/basic-authentication.service';
 
 @Component({
     selector: 'app-login',
@@ -19,24 +19,30 @@ export class LoginComponent implements OnInit {
   invalidLogin = false;
 
   constructor(private router: Router, 
-    private hardcodedAuthenticationService: HardcodedAuthenticationService) {}
+    private basicAuthenticationService: BasicAuthenticationService) {}
 
   ngOnInit() {
     
   }
 
-  handleLogin() {
+  handleBasicAuthLogin() {
     console.log('clicked');
     console.log('username=', this.username);
+    console.log('password=', this.password);
 
-    if(this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
-
-      this.router.navigate(['welcome', this.username]);
-      this.invalidLogin = false;
-    } else {
-
+    this.basicAuthenticationService.executeBasicAuthService(this.username, this.password)
+    .subscribe(
+      data => {
+        console.log('data = ', data);
+        this.router.navigate(['welcome', this.username]);
+        this.invalidLogin = false;
+    }, 
+    
+    error => {
+      console.log(error);
       this.invalidLogin = true;
-    }
+
+    })
   }
   
   

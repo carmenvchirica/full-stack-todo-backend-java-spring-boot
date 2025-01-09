@@ -1,0 +1,28 @@
+# Angular specific
+/node_modules/
+/dist/
+/build/
+/coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled TypeScript
+*.tsbuildinfo
+
+# IDE settings
+.idea/
+.vscode/
+*.suo
+*.ntvs
+*.njsproj
+*.sln
+
+# Mac and Windows
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+/.angular/cache
+.tsbuildinfo
+.angular/

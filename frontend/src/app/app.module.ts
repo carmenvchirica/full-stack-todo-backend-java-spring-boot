@@ -10,10 +10,12 @@ import { ErrorComponent } from './error/error.component';
 import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TodoComponent } from './todo/todo.component';
+import { HttpIntercepterBasicAuthService } from './services/http/http-intercepter-basic-auth.service';
 
 @NgModule({
-    declarations: [AppComponent, LogoutComponent],
+    declarations: [AppComponent, LogoutComponent, TodoComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -25,7 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
         FooterComponent,
         HttpClientModule
     ],
-    providers: [],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi:true}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

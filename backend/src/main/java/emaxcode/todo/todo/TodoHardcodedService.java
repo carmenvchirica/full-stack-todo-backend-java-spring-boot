@@ -22,4 +22,34 @@ public class TodoHardcodedService {
         return todos;
     }
 
+
+    public Todo deleteTodoById(Long id) {
+        Todo todo = findById(id);
+        if(todo == null) {
+            return null;
+        }
+        todos.remove(todo);
+        return todo;
+    }
+
+    public Todo findById(Long id) {
+        for(Todo t : todos) {
+            if(t.getId() == id) {
+                return t;
+            }
+        }
+        return null;
+    }
+
+    public Todo save(Todo todo) {
+        if(todo.getId() == -1 || todo.getId() == 0) {
+            todo.setId(++idCounter);
+            todos.add(todo);
+        } else {
+            deleteTodoById(todo.getId());
+            todos.add(todo);
+        }
+        return todo;
+    }
+
 }
